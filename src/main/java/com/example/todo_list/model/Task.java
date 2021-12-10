@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 @Data
 @Entity
@@ -15,18 +15,26 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "category")
+    private String category;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "item")
+    private String itemName;
 
-    @Column(name = "is_done")
-    private boolean isDone;
+    @Column(name = "path")
+    private String path;
 
-    @Column(name = "created_date")
-    private LocalDateTime createdDate;
+    @Column(name = "amount")
+    private double amount;
 
-    @Column(name = "author")
-    private String author;
+    @Column(name = "price")
+    private BigDecimal price;
+
+    @Column(name = "paid")
+    private BigDecimal paid;
+
+    @Column(name = "payment_type")
+    private String paymentType;
+
 }
+
