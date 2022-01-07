@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,14 +18,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "order_id")
-    private String orderId;
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "customer")
     private Customer customer;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manager")
     private Customer manager;
 
@@ -35,16 +33,19 @@ public class Order {
     @Column(name = "created_date")
     private LocalDateTime createdDate;
 
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "tasks")
     private List<Task> tasks;
 
-    @Column(name = "finished_date")
-    private LocalDateTime finishedDate;
-
-    @Column(name = "status")
-    private OrderStatusType status;
+//    @Column(name = "finished_date")
+//    private LocalDateTime finishedDate;
+//
+//    @Column(name = "status")
+//    private OrderStatusType status;
+//
+//    @Column(name = "paid")
+//    private BigDecimal paid;
+//
+//    @Column(name = "payment_type")
+//    private String paymentType;
 }

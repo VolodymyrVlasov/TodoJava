@@ -6,33 +6,31 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
-@Data
+//@Data
 @Entity
-@Table(name = "tasks")
+//@Table(name = "items")
 @NoArgsConstructor
-public class Task {
+public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "item_id")
-    private Item item;
+    @OneToOne(mappedBy = "item", cascade = CascadeType.ALL)
+    private Task task;
 
     @Column(name = "category")
     private ItemType category;
 
-    @Column(name = "item")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "path")
-    private String path;
-
-    @Column(name = "amount")
-    private double amount;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "price")
+//    private List<BigDecimal> price;
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 }
-
