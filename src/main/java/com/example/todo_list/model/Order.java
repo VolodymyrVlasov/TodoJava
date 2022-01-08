@@ -11,30 +11,30 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "orders")
+@Table(name = "ORDERS")
 @NoArgsConstructor
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CUSTOMER_ID")
     private Customer customer;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "manager")
+    @JoinColumn(name = "MANAGER_ID")
     private Customer manager;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "maker")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "MAKER_ID")
     private Customer maker;
 
-    @Column(name = "created_date")
+    @Column(name = "CREATED_DATE")
     private LocalDateTime createdDate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "tasks")
+    @JoinColumn(name = "TASKS")
     private List<Task> tasks;
 
 //    @Column(name = "finished_date")

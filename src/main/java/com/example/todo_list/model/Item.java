@@ -8,9 +8,9 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-//@Data
+@Data
 @Entity
-//@Table(name = "items")
+@Table(name = "items")
 @NoArgsConstructor
 public class Item {
 
@@ -27,9 +27,9 @@ public class Item {
     @Column(name = "name")
     private String name;
 
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "price")
-//    private List<BigDecimal> price;
+    @ElementCollection
+    @JoinColumn(name = "price_list")
+    private List<BigDecimal> priceList;
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;

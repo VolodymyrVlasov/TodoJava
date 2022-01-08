@@ -35,7 +35,6 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Order> create(@RequestBody Order order) {
-        System.out.println(order);
         Order savedOrder = orderService.create(order);
         if (savedOrder == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
